@@ -9,7 +9,7 @@ async function userHandler(req, res) {
   
     switch (method) {
       case 'GET':
-        // Get data from your database
+        // Get data from database
         const newDomain = await Domain.find({ ownerID: `${id}`})
         res.json(newDomain)
         break

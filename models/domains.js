@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//Database skeleton for enforcing unique domainName
 const domainSchema = mongoose.Schema({
     domainName: {
         required: true,

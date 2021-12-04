@@ -4,7 +4,7 @@ const search = async(req, res) => {
     var noMatch = null;
     if(req.query.q) {
         const regex = new RegExp(escapeRegex(req.query.q), 'gi');
-        // Get all campgrounds from DB
+        // Get all domains from DB matching query
         domains.find({domainName: regex}, function(err, alldomains){
            if(err){
                console.log(err);
@@ -17,7 +17,7 @@ const search = async(req, res) => {
            }
         });
     } else {
-        // Get all campgrounds from DB
+        // Get all domains from DB
         domains.find({}, function(err, alldomains){
            if(err){
                console.log(err);

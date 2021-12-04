@@ -9,28 +9,17 @@ function HomePage() {
   const [loading, setLoad] = useState(false);
   const [searchInput, setSearch] = useState();
 
-  async function searchDomain(a, search) {
-      a.preventDefault()
-        const res = await fetch("/api/domain/search", {
-            method: "GET",
-            body: JSON.stringify({ q: search})
-        })
-
-        const data = await res.json()
-
-        console.log(data)
-  }
+  
 
   async function updateDomain(e, a, b) {
-        e.preventDefault()
-        const res = await fetch(`/api/domain/${a}`, {
-            method: "PUT",
-            body: JSON.stringify({ownerName: b})
-        })
+    e.preventDefault();
+    const res = await fetch(`/api/domain/${a}`, {
+      method: "PUT",
+      body: JSON.stringify({ ownerName: b }),
+    });
 
-        const data = await res.json()
-        console.log(data)
-
+    const data = await res.json();
+    console.log(data);
   }
 
   async function submitData(e, a, b, c) {
@@ -74,15 +63,15 @@ function HomePage() {
         <div style={styles.containerSm}>
           <div style={styles.doc}>
             <div>Documentation</div>
-            <div style={{ padding: 40}}>
-                <div>Output is rendered in console</div>
-                <div>/api/domain/byOwner/12345 *ORDER DATA BY OWNER ID</div>
-                <div>/api/domain/search  *GET ALL DATA FROM DB</div>
-                <div>/api/domain/:ownerid *UPDATE DATA IN DB</div>
+            <div style={{ padding: 40 }}>
+              <div>Output is rendered in console</div>
+              <div>/api/domain/byOwner/12345 *ORDER DATA BY OWNER ID</div>
+              <div>/api/domain/search *GET ALL DATA FROM DB</div>
+              <div>/api/domain/:ownerid *UPDATE DATA IN DB</div>
 
-                <div>
-                    <p>To Work efficiently with this project  create a .env file</p>
-                </div>
+              <div>
+                <p>To Work efficiently with this project create a .env file</p>
+              </div>
             </div>
           </div>
           <div style={styles.form}>
@@ -126,7 +115,11 @@ function HomePage() {
             </form>
 
             <div>Update Domain</div>
-            <form onSubmit={(e) => updateDomain(e, ownerID2, ownerNm2)} method="PUT" action="/api/domain">
+            <form
+              onSubmit={(e) => updateDomain(e, ownerID2, ownerNm2)}
+              method="PUT"
+              action="/api/domain"
+            >
               <input
                 style={styles.input}
                 type="text"
@@ -143,16 +136,23 @@ function HomePage() {
                 onChange={(e) => setOwner2(e.currentTarget.value)}
               />
 
-              <button style={{
+              <button
+                style={{
                   marginTop: 20,
                   backgroundColor: "black",
                   borderRadius: 10,
                   padding: 10,
                   color: "white",
-                }}>Update</button>
+                }}
+              >
+                Update
+              </button>
             </form>
             <div>Search Domain</div>
-            <form /*onSubmit={(e) => searchDomain(e, searchInput)} */ action="/api/domain/search" method="GET">
+            <form
+              /*onSubmit={(e) => searchDomain(e, searchInput)} */ action="/api/domain/search"
+              method="GET"
+            >
               <input
                 style={styles.input}
                 type="text"
@@ -162,15 +162,17 @@ function HomePage() {
                 onChange={(e) => setSearch(e.currentTarget.value)}
               />
 
-              
-
-              <button style={{
+              <button
+                style={{
                   marginTop: 20,
                   backgroundColor: "black",
                   borderRadius: 10,
                   padding: 10,
                   color: "white",
-                }}>Search</button>
+                }}
+              >
+                Search
+              </button>
             </form>
           </div>
         </div>
