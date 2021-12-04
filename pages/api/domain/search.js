@@ -11,7 +11,7 @@ const search = async(req, res) => {
                res.send(err.message)
            } else {
               if(alldomains.length < 1) {
-                  noMatch = "No campgrounds match that query, please try again.";
+                  noMatch = "No domains match that query, please try again.";
               }
               res.json({domains:alldomains, noMatch: noMatch});
            }

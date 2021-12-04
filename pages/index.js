@@ -19,7 +19,14 @@ function HomePage() {
     });
 
     const data = await res.json();
+
+    if(data.error) {
+      alert(data.error + "\n\nVisit /api/domain to check available domains or Create a new Domain Above")
+    } else if(data.domainName) {
+      alert("Successfully✅ updated Ownership \n\nVisit /api/domain to check domains")
+    }
     console.log(data);
+    
   }
 
   async function submitData(e, a, b, c) {
@@ -70,7 +77,7 @@ function HomePage() {
               <div>/api/domain/:ownerid *UPDATE DATA IN DB</div>
 
               <div>
-                <p>To Work efficiently with this project create a .env file</p>
+                <p>To Work efficiently with this project ensure you include your MongoDB connection string in .env file</p>
               </div>
             </div>
           </div>
@@ -123,7 +130,7 @@ function HomePage() {
               <input
                 style={styles.input}
                 type="text"
-                placeholder="Owner ID"
+                placeholder="Domain Name"
                 value={ownerID2}
                 onChange={(e) => setOwnerID2(e.currentTarget.value)}
               />

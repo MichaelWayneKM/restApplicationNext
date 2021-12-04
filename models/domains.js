@@ -18,6 +18,6 @@ const domainSchema = mongoose.Schema({
 
 }, { timestamps: true});
 
-module.exports = mongoose.model('domain', domainSchema);
+//module.exports = mongoose.model('domain', domainSchema);
 
-
+module.exports = mongoose.models.Domain || mongoose.model("Domain", domainSchema);

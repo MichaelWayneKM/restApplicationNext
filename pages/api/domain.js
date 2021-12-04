@@ -18,13 +18,7 @@ async function addDomain(req, res) {
   }
 }
 
-async function updateDomain(req, res) {
-  const { pid } = req.query;
-  const data = JSON.parse(req.body)
-  const newDomain = await Domain.findOneAndUpdate({ ownerID: `${pid}`}, data)
-  res.JSON(newDomain)
-  res.end(`Post: ${pid}`);
-}
+
 
 const handler = async (req, res) => {
   // switch the methods
@@ -35,10 +29,6 @@ const handler = async (req, res) => {
 
     case "POST": {
       return addDomain(req, res);
-    }
-
-    case "PUT": {
-      return updateDomain(req, res);
     }
 
     case "DELETE": {
